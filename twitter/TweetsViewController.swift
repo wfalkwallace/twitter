@@ -17,14 +17,16 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         tweetsTableView.dataSource = self
-        tweetsTableView.estimatedRowHeight = 89
         tweetsTableView.rowHeight = UITableViewAutomaticDimension
-        
+        tweetsTableView.estimatedRowHeight = 89
+
         tweetsTableView.addPullToRefreshWithActionHandler { () -> Void in
             TwitterClient.sharedInstance.homeTimelineWithParams(nil, block: { (tweets, error) -> () in
                 self.tweets = tweets
-                self.tweetsTableView.pullToRefreshView.stopAnimating()
                 self.tweetsTableView.reloadData()
+                // hack to fix initial load rowheights
+                self.tweetsTableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, self.tweetsTableView.numberOfSections())), withRowAnimation: .None)
+                self.tweetsTableView.pullToRefreshView.stopAnimating()
             })
         }
         
