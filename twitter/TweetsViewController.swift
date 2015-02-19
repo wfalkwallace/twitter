@@ -17,7 +17,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         tweetsTableView.dataSource = self
-        tweetsTableView.estimatedRowHeight = 150
+        tweetsTableView.estimatedRowHeight = 89
         tweetsTableView.rowHeight = UITableViewAutomaticDimension
         
         TwitterClient.sharedInstance.homeTimelineWithParams(nil, block: { (tweets, error) -> () in
@@ -35,7 +35,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tweetsTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TweetCell") as TweetTableViewCell
+        let cell = tweets?[indexPath.row].retweetedStatus?.user!.screenname != nil
+            ? tweetsTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.RetweetCell") as TweetTableViewCell
+            : tweetsTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TweetCell") as TweetTableViewCell
         cell.tweet = tweets?[indexPath.row]
         return cell
     }

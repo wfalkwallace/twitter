@@ -5,6 +5,7 @@ target 'twitter' do
 
   pod 'AFNetworking'
   pod 'BDBOAuth1Manager'
+  pod 'SVPullToRefresh'
 
 end
 
