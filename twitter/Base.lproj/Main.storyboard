@@ -50,9 +50,65 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <segue destination="vov-q5-Jl5" kind="presentation" identifier="com.falk-wallace.LoginSegue" id="xT4-Hr-5DC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Tweets View Controller-->
+        <scene sceneID="aQ4-Fc-psU">
+            <objects>
+                <viewController storyboardIdentifier="TweetsViewController" id="vov-q5-Jl5" customClass="TweetsViewController" customModule="twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gKx-YB-Q3O"/>
+                        <viewControllerLayoutGuide type="bottom" id="cBD-aD-e9D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hdB-4h-yOM">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIK-Or-BmF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="177" y="285" width="49" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onLogout:" destination="vov-q5-Jl5" eventType="touchUpInside" id="MoJ-qv-a5f"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="cIK-Or-BmF" secondAttribute="centerY" id="8gh-52-Bps"/>
+                            <constraint firstAttribute="centerX" secondItem="cIK-Or-BmF" secondAttribute="centerX" id="TKF-r2-B2j"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="cIK-Or-BmF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="8gh-52-Bps"/>
+                                <exclude reference="TKF-r2-B2j"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="cIK-Or-BmF"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="8gh-52-Bps"/>
+                                <include reference="TKF-r2-B2j"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h5q-Wn-r0D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1206" y="308"/>
         </scene>
     </scenes>
 </document>
