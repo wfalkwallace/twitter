@@ -20,10 +20,28 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         tweetsTableView.estimatedRowHeight = 89
         tweetsTableView.rowHeight = UITableViewAutomaticDimension
         
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil, block: { (tweets, error) -> () in
-            self.tweets = tweets
-            self.tweetsTableView.reloadData()
-        })
+        tweetsTableView.addPullToRefreshWithActionHandler { () -> Void in
+            TwitterClient.sharedInstance.homeTimelineWithParams(nil, block: { (tweets, error) -> () in
+                self.tweets = tweets
+                self.tweetsTableView.pullToRefreshView.stopAnimating()
+                self.tweetsTableView.reloadData()
+            })
+        }
+        
+        
+        tweetsTableView.addInfiniteScrollingWithActionHandler { () -> Void in
+            var params = [:]
+            if let maxId = self.tweets?.last?.id {
+                params = ["max_id": "\(maxId + 1)"]
+            }
+            TwitterClient.sharedInstance.homeTimelineWithParams(params, block: { (tweets, error) -> () in
+                self.tweets? += tweets!
+                self.tweetsTableView.infiniteScrollingView.stopAnimating()
+                self.tweetsTableView.reloadData()
+            })
+        }
+        
+        tweetsTableView.triggerPullToRefresh()
     }
 
     @IBAction func onLogout(sender: AnyObject) {
@@ -45,4 +63,5 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
 }
