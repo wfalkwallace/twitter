@@ -40,6 +40,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        TwitterClient.sharedInstance.fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken: BDBOAuth1Credential!) -> Void in
+            println("got the access token")
+            TwitterClient.sharedInstance.requestSerializer.saveAccessToken(accessToken)
+            
+            TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                println("user: \(response)")
+                }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("error in getting current user")
+            })
+            
+            TwitterClient.sharedInstance.GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                println("home timeline: \(response)")
+                }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                    println("error in getting home timeline")
+            })
+            
+        }, failure: { (error: NSError!) -> Void in
+            println("failed to receive access token")
+        })
+        
+
+        
+        return true
+    }
 
 
 }
