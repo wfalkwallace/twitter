@@ -19,10 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
         
         if User.currentUser != nil {
-            var tweetsViewController = storyboard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
+            var tweetsViewController = storyboard.instantiateViewControllerWithIdentifier("TweetsViewNavigationController") as UIViewController
             window?.rootViewController = tweetsViewController
         }
         
+        
+        //globally style the nav controller
+        var navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.barTintColor = UIColor(red: 0.333, green: 0.675, blue: 0.933, alpha:0.75)
+        //navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "MarketingScript", size: 30)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+
         return true
     }
     

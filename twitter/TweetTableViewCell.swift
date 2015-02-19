@@ -10,7 +10,22 @@ import UIKit
 
 class TweetTableViewCell: UITableViewCell {
 
+    var tweet: Tweet? {
+        didSet {
+            tweetNameLabel.text = tweet!.user!.name
+            tweetScreennameLabel.text = tweet!.user!.screenname
+            tweetTimestampLabel.text = tweet!.createdAtString
+            tweetTextLabel.text = tweet!.text
+            tweetProfileImageURL.setImageWithURL(NSURL(string: tweet!.user!.profileImageURL!))
+        }
+    }
+    
+    @IBOutlet weak var tweetNameLabel: UILabel!
+    @IBOutlet weak var tweetScreennameLabel: UILabel!
+    @IBOutlet weak var tweetTimestampLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
+    @IBOutlet weak var tweetProfileImageURL: UIImageView!
+    @IBOutlet weak var tweetRetweetLabel: UILabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()

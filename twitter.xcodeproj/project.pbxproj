@@ -19,6 +19,7 @@
 		E62100CE1A93C39200F41710 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E62100CC1A93C39200F41710 /* LaunchScreen.xib */; };
 		E62100DA1A93C39200F41710 /* twitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62100D91A93C39200F41710 /* twitterTests.swift */; };
 		E698A5961A9606BE0031B5C4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A5951A9606BE0031B5C4 /* TweetTableViewCell.swift */; };
+		E698A5981A960AA00031B5C4 /* MarketingScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E698A5971A960AA00031B5C4 /* MarketingScript.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		E62100D81A93C39200F41710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E62100D91A93C39200F41710 /* twitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twitterTests.swift; sourceTree = "<group>"; };
 		E698A5951A9606BE0031B5C4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
+		E698A5971A960AA00031B5C4 /* MarketingScript.ttf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MarketingScript.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		E62100B51A93C39200F41710 = {
 			isa = PBXGroup;
 			children = (
+				E698A5971A960AA00031B5C4 /* MarketingScript.ttf */,
 				E620F8221A95D464004899F1 /* secrets.xcconfig */,
 				E62100C01A93C39200F41710 /* twitter */,
 				E62100D61A93C39200F41710 /* twitterTests */,
@@ -263,6 +266,7 @@
 			files = (
 				E62100C91A93C39200F41710 /* Main.storyboard in Resources */,
 				E62100CE1A93C39200F41710 /* LaunchScreen.xib in Resources */,
+				E698A5981A960AA00031B5C4 /* MarketingScript.ttf in Resources */,
 				E62100CB1A93C39200F41710 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
