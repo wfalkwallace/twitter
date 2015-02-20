@@ -1,4 +1,4 @@
-//
+s//
 //  AppDelegate.swift
 //  twitter
 //
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //globally style the nav controller
         var navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.barTintColor = UIColor(red: 0.333, green: 0.675, blue: 0.933, alpha:0.75)
-        //navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "MarketingScript", size: 30)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationBarAppearace.titleTextAttributes = [NSFontAttributeName: UIFont(name: "MarketingScript", size: 30)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
 
         return true
     }
