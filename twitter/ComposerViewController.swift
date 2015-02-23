@@ -19,9 +19,9 @@ class ComposerViewController: UIViewController {
     @IBOutlet weak var composerUsername: UILabel!
     @IBOutlet weak var composerCharacterCount: UILabel!
     @IBOutlet weak var composerTextField: UITextField!
-    
-    
+
     var delegate: ComposerViewControllerDelegate?
+    var reply: Tweet?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -46,6 +46,46 @@ class TweetTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    @IBAction func onRetweet(sender: AnyObject) {
+        tweet?.retweeted = true
+        tweet?.retweetCount! += 1
+        TwitterClient.sharedInstance.retweetWithBlock(tweet!, block: { (tweet, error) -> () in
+            if let tweet = tweet {
+                self.retweetButton.setImage(UIImage(named: "retweet-on"), forState: .Normal)
+            } else {
+                println(error)
+                // some error handling here
+            }
+        })
+    }
+    
+    @IBAction func onFavorite(sender: AnyObject) {
+        if let favorited = tweet?.favorited {
+            tweet?.favorited = !favorited
+            if !favorited {
+                tweet?.favoriteCount! += 1
+                TwitterClient.sharedInstance.favoriteWithBlock(tweet!, block: { (tweet, error) -> () in
+                    if let tweet = tweet {
+                        self.favoriteButton.setImage(UIImage(named: "favorite-on"), forState: .Normal)
+                    } else {
+                        println(error)
+                        // some error handling here
+                    }
+                })
+            } else {
+                tweet?.favoriteCount! -= 1
+                TwitterClient.sharedInstance.unFavoriteWithBlock(tweet!, block: { (tweet, error) -> () in
+                    if let tweet = tweet {
+                        self.favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
+                    } else {
+                        println(error)
+                        // some error handling here
+                    }
+                })
+            }
+        }
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

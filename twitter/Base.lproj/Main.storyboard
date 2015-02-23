@@ -144,6 +144,9 @@
                                                             <include reference="TB6-QT-cnK"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="onCompose:" destination="vov-q5-Jl5" eventType="touchUpInside" id="5Sf-a7-P2O"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXD-8R-7p4">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -166,6 +169,9 @@
                                                             <include reference="jfa-4G-BkV"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="onRetweet:" destination="qmY-7b-im9" eventType="touchUpInside" id="lwS-H5-gbe"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24q-Cb-inQ">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -188,6 +194,9 @@
                                                             <include reference="nvv-bx-GR0"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="onFavorite:" destination="qmY-7b-im9" eventType="touchUpInside" id="1Nk-JK-aAw"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFN-0a-ag0">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -470,6 +479,9 @@
                                                             <include reference="oGI-Iw-4Tm"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="onCompose:" destination="vov-q5-Jl5" eventType="touchUpInside" id="SWR-uk-mGR"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlI-MS-RWQ">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -492,6 +504,9 @@
                                                             <include reference="tka-F6-bLl"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="onRetweet:" destination="nGb-ge-6Qa" eventType="touchUpInside" id="VBU-kP-fh6"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPy-kt-ygp">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -514,6 +529,9 @@
                                                             <include reference="SVh-Qi-X6b"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="onFavorite:" destination="nGb-ge-6Qa" eventType="touchUpInside" id="jd3-Ur-swK"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OA-Xc-yI2">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>

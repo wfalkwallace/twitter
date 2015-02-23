@@ -60,6 +60,36 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         })
     }
     
+    func retweetWithBlock(tweet: Tweet, block: (tweet: Tweet?, error: NSError?) -> ()) {
+        // TODO add unretweet
+        POST("1.1/statuses/retweet/\(tweet.id!).json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            var tweet = Tweet(dictionary: response as NSDictionary)
+            block(tweet: tweet, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                block(tweet: nil, error: error)
+        })
+    }
+    
+    func favoriteWithBlock(tweet: Tweet, block: (tweet: Tweet?, error: NSError?) -> ()) {
+        var params = ["id": tweet.id!] as NSDictionary
+        POST("1.1/favorites/create.json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            var tweet = Tweet(dictionary: response as NSDictionary)
+            block(tweet: tweet, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                block(tweet: nil, error: error)
+        })
+    }
+    
+    func unFavoriteWithBlock(tweet: Tweet, block: (tweet: Tweet?, error: NSError?) -> ()) {
+        var params = ["id": tweet.id!] as NSDictionary
+        POST("1.1/favorites/destroy.json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            var tweet = Tweet(dictionary: response as NSDictionary)
+            block(tweet: tweet, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                block(tweet: nil, error: error)
+        })
+    }
+    
     func openURL(url: NSURL) {
         fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken: BDBOAuth1Credential!) -> Void in
             //println("got the access token")
