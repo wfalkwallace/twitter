@@ -22,6 +22,8 @@
 		E698A59A1A96AAC30031B5C4 /* Composer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E698A5991A96AAC30031B5C4 /* Composer.storyboard */; };
 		E698A5A01A96B45E0031B5C4 /* MarketingScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E698A59E1A96B44F0031B5C4 /* MarketingScript.ttf */; };
 		E698A5A31A97BC6A0031B5C4 /* ComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A5A21A97BC6A0031B5C4 /* ComposerViewController.swift */; };
+		E698A5A71A9B05990031B5C4 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E698A5A61A9B05990031B5C4 /* Detail.storyboard */; };
+		E698A5A91A9B05D30031B5C4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A5A81A9B05D30031B5C4 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		E698A5991A96AAC30031B5C4 /* Composer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Composer.storyboard; sourceTree = "<group>"; };
 		E698A59E1A96B44F0031B5C4 /* MarketingScript.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MarketingScript.ttf; sourceTree = "<group>"; };
 		E698A5A21A97BC6A0031B5C4 /* ComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposerViewController.swift; sourceTree = "<group>"; };
+		E698A5A61A9B05990031B5C4 /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		E698A5A81A9B05D30031B5C4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,7 @@
 		E698A5941A9602230031B5C4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E698A5A81A9B05D30031B5C4 /* DetailViewController.swift */,
 				E698A5A21A97BC6A0031B5C4 /* ComposerViewController.swift */,
 				E62100C51A93C39200F41710 /* LoginViewController.swift */,
 				E620F8281A95EE9D004899F1 /* TweetsViewController.swift */,
@@ -200,6 +205,7 @@
 			children = (
 				E62100C71A93C39200F41710 /* Main.storyboard */,
 				E698A5991A96AAC30031B5C4 /* Composer.storyboard */,
+				E698A5A61A9B05990031B5C4 /* Detail.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 				E62100CE1A93C39200F41710 /* LaunchScreen.xib in Resources */,
 				E698A59A1A96AAC30031B5C4 /* Composer.storyboard in Resources */,
 				E62100CB1A93C39200F41710 /* Images.xcassets in Resources */,
+				E698A5A71A9B05990031B5C4 /* Detail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E698A5A91A9B05D30031B5C4 /* DetailViewController.swift in Sources */,
 				E620F8251A95E292004899F1 /* User.swift in Sources */,
 				E620F8271A95E29D004899F1 /* Tweet.swift in Sources */,
 				E620F8291A95EE9D004899F1 /* TweetsViewController.swift in Sources */,

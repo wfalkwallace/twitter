@@ -30,6 +30,10 @@ class ComposerViewController: UIViewController {
         composerUsername.text = user.screenname
         composerName.text = user.name
         composerUserImage.setImageWithURL(NSURL(string: user.profileImageURL!))
+        
+        if let reply = reply {
+            composerTextField.text = "@\(reply.user?.screenname)"
+        }
     }
 
     override func didReceiveMemoryWarning() {

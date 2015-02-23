@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource, ComposerViewControllerDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, ComposerViewControllerDelegate, DetailViewControllerDelegate, UITableViewDelegate {
 
     var tweets: [Tweet]?
     @IBOutlet weak var tweetsTableView: UITableView!
@@ -17,6 +17,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, ComposerVie
         super.viewDidLoad()
 
         tweetsTableView.dataSource = self
+        tweetsTableView.delegate = self
         tweetsTableView.rowHeight = UITableViewAutomaticDimension
         tweetsTableView.estimatedRowHeight = 89
 
@@ -66,6 +67,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, ComposerVie
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func detailViewController(detailViewController: DetailViewController, didEndViewing: Bool) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets?.count ?? 0
     }
@@ -80,6 +85,16 @@ class TweetsViewController: UIViewController, UITableViewDataSource, ComposerVie
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let detailStoryboard = UIStoryboard(name: "Detail", bundle: nil)
+        let detailNav = detailStoryboard.instantiateInitialViewController() as UINavigationController
+        // This hack should move to CompNavCont subclass
+        let detail = detailNav.viewControllers[0] as DetailViewController
+        detail.delegate = self
+        detail.tweet = tweets![indexPath.row]
+        self.presentViewController(detailNav, animated: true, completion: nil)
     }
     
 }

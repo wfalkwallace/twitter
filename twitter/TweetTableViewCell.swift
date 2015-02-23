@@ -49,6 +49,7 @@ class TweetTableViewCell: UITableViewCell {
     @IBAction func onRetweet(sender: AnyObject) {
         tweet?.retweeted = true
         tweet?.retweetCount! += 1
+        retweetCount.text = "\(tweet!.retweetCount!)"
         TwitterClient.sharedInstance.retweetWithBlock(tweet!, block: { (tweet, error) -> () in
             if let tweet = tweet {
                 self.retweetButton.setImage(UIImage(named: "retweet-on"), forState: .Normal)
@@ -83,6 +84,7 @@ class TweetTableViewCell: UITableViewCell {
                     }
                 })
             }
+            favoriteCount.text = "\(tweet!.favoriteCount!)"
         }
     }
     
