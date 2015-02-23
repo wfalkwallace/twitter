@@ -24,7 +24,6 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         return Static.instance
     }
     
-    //func homeTimelineWithBlock(block: (tweets: [Tweet]?, error: NSError?) -> ())
     func homeTimelineWithParams(params: NSDictionary?, block: (tweets: [Tweet]?, error: NSError?) -> ()) {
         GET("1.1/statuses/home_timeline.json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
@@ -48,7 +47,17 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             println("failed to get the request token")
             self.loginBlock?(user: nil, error: error)
         }
-        
+    }
+    
+    func statusUpdateWithBlock(tweet: Tweet, block: (tweet: Tweet?, error: NSError?) -> ()) {
+        var params = ["status": tweet.text!] as NSDictionary
+        // TODO also use reply_to_status_id param
+        POST("1.1/statuses/update.json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            var tweet = Tweet(dictionary: response as NSDictionary)
+            block(tweet: tweet, error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                block(tweet: nil, error: error)
+        })
     }
     
     func openURL(url: NSURL) {

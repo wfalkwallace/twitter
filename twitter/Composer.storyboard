@@ -62,10 +62,28 @@
                                     <rect key="frame" x="362.5" y="72" width="29" height="20.5"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O5K-rk-B4a">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="TopLeft" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O5K-rk-B4a">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="D48-tu-HZP">
+                                        <variation key="widthClass=compact" constant="200"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="D48-tu-HZP"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="D48-tu-HZP"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onValueChanged:" destination="4eK-Af-Rfx" eventType="editingChanged" id="KGK-sb-cW5"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -132,7 +150,7 @@
                                 <include reference="Uar-w2-hOn"/>
                                 <include reference="a9Y-I5-5b5"/>
                                 <include reference="ySQ-tb-YTA"/>
-                                <include reference="5Co-or-UYK"/>
+                                <exclude reference="5Co-or-UYK"/>
                             </mask>
                         </variation>
                     </view>

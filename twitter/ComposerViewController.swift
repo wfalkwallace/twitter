@@ -26,7 +26,10 @@ class ComposerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        var user = User.currentUser!
+        composerUsername.text = user.screenname
+        composerName.text = user.name
+        composerUserImage.setImageWithURL(NSURL(string: user.profileImageURL!))
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,11 +37,28 @@ class ComposerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onValueChanged(sender: AnyObject) {
+        composerCharacterCount.text = "\(140 - countElements(composerTextField.text))"
+        // TODO limit tweet length
+    }
+    
     @IBAction func onSend(sender: AnyObject) {
-        // TODO
-        var tweet = Tweet(text: composerTextField.text, user: User.currentUser!)
-//        TwitterClient.sharedInstance.updateStatus(tweet)
-        delegate?.composerViewController(self, didSendTweet: tweet)
+        if composerTextField.text.isEmpty {
+            let alertController = UIAlertController(title: "Tweet Body Missing", message: "You can't send an empty tweet!", preferredStyle: .Alert)
+            let acceptAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertController.addAction(acceptAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } else {
+            var tweet = Tweet(text: composerTextField.text, user: User.currentUser!)
+            TwitterClient.sharedInstance.statusUpdateWithBlock(tweet, block: { (tweet, error) -> () in
+                if let tweet = tweet {
+                    self.delegate?.composerViewController(self, didSendTweet: tweet)
+                } else {
+                    println(error)
+                    // some error handling here
+                }
+            })
+        }
     }
 
     @IBAction func onCancel(sender: AnyObject) {
