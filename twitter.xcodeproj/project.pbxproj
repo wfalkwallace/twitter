@@ -21,6 +21,7 @@
 		E698A5961A9606BE0031B5C4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A5951A9606BE0031B5C4 /* TweetTableViewCell.swift */; };
 		E698A59A1A96AAC30031B5C4 /* Composer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E698A5991A96AAC30031B5C4 /* Composer.storyboard */; };
 		E698A5A01A96B45E0031B5C4 /* MarketingScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E698A59E1A96B44F0031B5C4 /* MarketingScript.ttf */; };
+		E698A5A31A97BC6A0031B5C4 /* ComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698A5A21A97BC6A0031B5C4 /* ComposerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		E698A5951A9606BE0031B5C4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		E698A5991A96AAC30031B5C4 /* Composer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Composer.storyboard; sourceTree = "<group>"; };
 		E698A59E1A96B44F0031B5C4 /* MarketingScript.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MarketingScript.ttf; sourceTree = "<group>"; };
+		E698A5A21A97BC6A0031B5C4 /* ComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,17 +137,16 @@
 		E62100C01A93C39200F41710 /* twitter */ = {
 			isa = PBXGroup;
 			children = (
+				E620F81C1A95D2ED004899F1 /* twitter-Bridging-Header.h */,
+				E62100CC1A93C39200F41710 /* LaunchScreen.xib */,
+				E62100C31A93C39200F41710 /* AppDelegate.swift */,
 				E620F81F1A95D33D004899F1 /* API */,
 				E620F8231A95E1D7004899F1 /* Models */,
 				E698A5941A9602230031B5C4 /* View Controllers */,
-				E62100C31A93C39200F41710 /* AppDelegate.swift */,
-				E62100C71A93C39200F41710 /* Main.storyboard */,
+				E698A5A11A97BC410031B5C4 /* Storyboards */,
 				E62100CA1A93C39200F41710 /* Images.xcassets */,
-				E62100CC1A93C39200F41710 /* LaunchScreen.xib */,
 				E62100C11A93C39200F41710 /* Supporting Files */,
 				E698A59B1A96B3630031B5C4 /* Resources */,
-				E620F81C1A95D2ED004899F1 /* twitter-Bridging-Header.h */,
-				E698A5991A96AAC30031B5C4 /* Composer.storyboard */,
 			);
 			path = twitter;
 			sourceTree = "<group>";
@@ -178,6 +179,7 @@
 		E698A5941A9602230031B5C4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E698A5A21A97BC6A0031B5C4 /* ComposerViewController.swift */,
 				E62100C51A93C39200F41710 /* LoginViewController.swift */,
 				E620F8281A95EE9D004899F1 /* TweetsViewController.swift */,
 				E698A5951A9606BE0031B5C4 /* TweetTableViewCell.swift */,
@@ -191,6 +193,15 @@
 				E698A59E1A96B44F0031B5C4 /* MarketingScript.ttf */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		E698A5A11A97BC410031B5C4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E62100C71A93C39200F41710 /* Main.storyboard */,
+				E698A5991A96AAC30031B5C4 /* Composer.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +347,7 @@
 				E62100C61A93C39200F41710 /* LoginViewController.swift in Sources */,
 				E620F8211A95D367004899F1 /* TwitterClient.swift in Sources */,
 				E62100C41A93C39200F41710 /* AppDelegate.swift in Sources */,
+				E698A5A31A97BC6A0031B5C4 /* ComposerViewController.swift in Sources */,
 				E698A5961A9606BE0031B5C4 /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

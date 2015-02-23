@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource {
+class TweetsViewController: UIViewController, UITableViewDataSource, ComposerViewControllerDelegate {
 
     var tweets: [Tweet]?
     @IBOutlet weak var tweetsTableView: UITableView!
@@ -30,7 +30,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
             })
         }
         
-        
         tweetsTableView.addInfiniteScrollingWithActionHandler { () -> Void in
             var params = [:]
             if let maxId = self.tweets?.last?.id {
@@ -48,6 +47,23 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
 
     @IBAction func onLogout(sender: AnyObject) {
         User.currentUser?.logout()
+    }
+    
+    @IBAction func onCompose(sender: AnyObject) {
+        let composerStoryboard = UIStoryboard(name: "Composer", bundle: nil)
+        let composerNav = composerStoryboard.instantiateInitialViewController() as UINavigationController
+        // This hack should move to CompNavCont subclass
+        let composer = composerNav.viewControllers[0] as ComposerViewController
+        composer.delegate = self
+        self.presentViewController(composerNav, animated: true, completion: nil)
+    }
+    
+    func composerViewController(composerViewController: ComposerViewController, didSendTweet tweet: Tweet?) {
+        if let tweet = tweet {
+            tweets?.insert(tweet, atIndex: 0)
+            tweetsTableView.reloadData()
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -96,27 +96,6 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ugS-3L-1lf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="48" id="nhg-0b-TEc"/>
-                                                        <constraint firstAttribute="height" constant="54" id="pfL-2U-9u8">
-                                                            <variation key="widthClass=compact" constant="48"/>
-                                                        </constraint>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="nhg-0b-TEc"/>
-                                                            <exclude reference="pfL-2U-9u8"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <include reference="nhg-0b-TEc"/>
-                                                            <include reference="pfL-2U-9u8"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQn-bM-Onr">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
@@ -222,6 +201,27 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ugS-3L-1lf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="nhg-0b-TEc"/>
+                                                        <constraint firstAttribute="height" constant="54" id="pfL-2U-9u8">
+                                                            <variation key="widthClass=compact" constant="48"/>
+                                                        </constraint>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="nhg-0b-TEc"/>
+                                                            <exclude reference="pfL-2U-9u8"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="nhg-0b-TEc"/>
+                                                            <include reference="pfL-2U-9u8"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="4dU-3q-gmK" firstAttribute="top" secondItem="zyW-hF-hQh" secondAttribute="bottom" constant="8" id="0BP-v5-xkj"/>
@@ -257,7 +257,6 @@
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="zyW-hF-hQh"/>
-                                                    <exclude reference="ugS-3L-1lf"/>
                                                     <exclude reference="JQn-bM-Onr"/>
                                                     <exclude reference="Fy0-5C-y32"/>
                                                     <exclude reference="4dU-3q-gmK"/>
@@ -266,6 +265,7 @@
                                                     <exclude reference="24q-Cb-inQ"/>
                                                     <exclude reference="VFN-0a-ag0"/>
                                                     <exclude reference="k1D-gU-Z1p"/>
+                                                    <exclude reference="ugS-3L-1lf"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="0BP-v5-xkj"/>
@@ -302,7 +302,6 @@
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="zyW-hF-hQh"/>
-                                                    <include reference="ugS-3L-1lf"/>
                                                     <include reference="JQn-bM-Onr"/>
                                                     <include reference="Fy0-5C-y32"/>
                                                     <include reference="4dU-3q-gmK"/>
@@ -311,6 +310,7 @@
                                                     <include reference="24q-Cb-inQ"/>
                                                     <include reference="VFN-0a-ag0"/>
                                                     <include reference="k1D-gU-Z1p"/>
+                                                    <include reference="ugS-3L-1lf"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="0BP-v5-xkj"/>
@@ -742,7 +742,11 @@
                                 <action selector="onLogout:" destination="vov-q5-Jl5" id="mPT-lu-6yu"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2S5-p8-2U4"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2S5-p8-2U4">
+                            <connections>
+                                <action selector="onCompose:" destination="vov-q5-Jl5" id="fFA-Lt-xr4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tweetsTableView" destination="ce6-TE-JG8" id="UE8-Rq-oXr"/>
