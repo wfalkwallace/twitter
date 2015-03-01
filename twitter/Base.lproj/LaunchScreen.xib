@@ -29,7 +29,7 @@
                     </variation>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.20392158630000001" green="0.2823529541" blue="0.36862745879999997" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
                 <constraint firstItem="fVf-pO-Uvc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3RF-7e-tES"/>
                 <constraint firstAttribute="trailingMargin" secondItem="fVf-pO-Uvc" secondAttribute="trailing" constant="24" id="4bU-RJ-haI"/>

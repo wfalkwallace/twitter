@@ -103,7 +103,6 @@ class TweetTableViewCell: UITableViewCell {
     @IBAction func onReply(sender: AnyObject) {
     }
     
-    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         

@@ -12,15 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var storyboard = UIStoryboard(name: "Main", bundle: nil)
+    var loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+    var timelineStoryboard = UIStoryboard(name: "Timeline", bundle: nil)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
         
         if User.currentUser != nil {
-            var tweetsViewController = storyboard.instantiateViewControllerWithIdentifier("TweetsViewNavigationController") as UIViewController
-            window?.rootViewController = tweetsViewController
+            window?.rootViewController = timelineStoryboard.instantiateInitialViewController() as UINavigationController
+            
         }
         
         
@@ -33,9 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func userDidLogout() {
-        var loginViewController = storyboard.instantiateInitialViewController() as UIViewController
-        window?.rootViewController = loginViewController
-
+        window?.rootViewController = loginStoryboard.instantiateInitialViewController() as? UIViewController
     }
 
     func applicationWillResignActive(application: UIApplication) {

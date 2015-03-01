@@ -26,7 +26,11 @@ class ViewController: UIViewController {
         TwitterClient.sharedInstance.loginWithBlock() {
             (user: User?, error: NSError?) in
             if user != nil {
-                self.performSegueWithIdentifier("com.falk-wallace.LoginSegue", sender: self)
+                let timelineStoryboard = UIStoryboard(name: "Timeline", bundle: nil)
+                let timelineNav = timelineStoryboard.instantiateInitialViewController() as UINavigationController
+                // This hack should move to CompNavCont subclass
+                let timeline = timelineNav.viewControllers[0] as TimelineViewController
+                self.presentViewController(timelineNav, animated: true, completion: nil)
             } else {
                 //handle login error
             }

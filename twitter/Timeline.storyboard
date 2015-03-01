@@ -1,7 +1,102 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5Jv-oM-VWT">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Home-->
+        <scene sceneID="KZa-OA-cPp">
+            <objects>
+                <viewController storyboardIdentifier="TweetsViewController" id="JL4-VJ-6NB" customClass="TimelineViewController" customModule="twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iMY-Iv-adA"/>
+                        <viewControllerLayoutGuide type="bottom" id="d8g-V6-DHm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xqb-Mz-2Gx">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="107" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6j8-Ve-Z1J">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JL4-VJ-6NB" id="RMF-2O-bzy"/>
+                                    <outlet property="delegate" destination="JL4-VJ-6NB" id="ScU-eW-cXk"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d8g-V6-DHm" firstAttribute="top" secondItem="6j8-Ve-Z1J" secondAttribute="bottom" id="OaM-R9-2sx"/>
+                            <constraint firstItem="6j8-Ve-Z1J" firstAttribute="leading" secondItem="xqb-Mz-2Gx" secondAttribute="leading" id="RF7-vL-oxX"/>
+                            <constraint firstAttribute="trailing" secondItem="6j8-Ve-Z1J" secondAttribute="trailing" id="UE2-dN-h1a"/>
+                            <constraint firstItem="6j8-Ve-Z1J" firstAttribute="top" secondItem="xqb-Mz-2Gx" secondAttribute="top" id="VSv-WB-wRI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="6j8-Ve-Z1J"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="OaM-R9-2sx"/>
+                                <exclude reference="VSv-WB-wRI"/>
+                                <exclude reference="UE2-dN-h1a"/>
+                                <exclude reference="RF7-vL-oxX"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="6j8-Ve-Z1J"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="OaM-R9-2sx"/>
+                                <include reference="VSv-WB-wRI"/>
+                                <include reference="UE2-dN-h1a"/>
+                                <include reference="RF7-vL-oxX"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Home" id="bEf-1o-odw">
+                        <barButtonItem key="leftBarButtonItem" image="icon-logout" id="Yed-bo-0wL">
+                            <connections>
+                                <action selector="onLogout:" destination="JL4-VJ-6NB" id="D7Z-GH-hN6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="icon-compose" id="mvt-l8-L2o">
+                            <connections>
+                                <action selector="onCompose:" destination="JL4-VJ-6NB" id="CFc-8E-gtU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tweetsTableView" destination="6j8-Ve-Z1J" id="SAf-8Q-VvY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NMo-jA-iaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3981" y="240"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aT3-C6-CxY">
+            <objects>
+                <navigationController storyboardIdentifier="TimelineViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="5Jv-oM-VWT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3na-qf-61i">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JL4-VJ-6NB" kind="relationship" relationship="rootViewController" id="3d8-ph-6lH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PAz-XS-0vw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3169.5" y="240"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-compose" width="32" height="32"/>
+        <image name="icon-logout" width="32" height="32"/>
+    </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
