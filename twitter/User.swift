@@ -14,19 +14,36 @@ let userDidLoginNotification = "userDidLoginNotification"
 let userDidLogoutNotification = "userDidLogoutNotification"
 
 class User: NSObject {
+    var id: String?
     var name: String?
     var screenname: String?
     var profileImageURL: String?
     var tagline: String?
+    var location: String?
+    var profileBackgroundColor: String?
+    var profileBackgroundImageUrlHttps: String?
+    var profileBackgroundTile: String?
+    var profileTextColor: String?
+    var profileUseBackgroundImage: Bool?
+
+    
+    
     var dictionary: NSDictionary
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         
+        id = dictionary["id_str"] as? String
         name = dictionary["name"] as? String
         screenname = dictionary["screen_name"] as? String
-        profileImageURL = dictionary["profile_image_url"] as? String
+        profileImageURL = dictionary["profile_image_url_https"] as? String
         tagline = dictionary["description"] as? String
+        location = dictionary["location"] as? String
+        profileBackgroundColor = dictionary["profile_background_color"] as? String
+        profileBackgroundImageUrlHttps = dictionary["profile_background_image_url_https"] as? String
+        profileBackgroundTile = dictionary["profile_background_tile"] as? String
+        profileTextColor = dictionary["profile_text_color"] as? String
+        profileUseBackgroundImage = dictionary["profile_use_background_image"] as? Bool
     }
     
     func logout() {

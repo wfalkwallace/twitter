@@ -10,6 +10,21 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    var user: User?
+    var tweets: [Tweet]?
+    
+    @IBOutlet weak var containerScrollView: UIScrollView!
+    @IBOutlet weak var bannerScrollView: UIScrollView!
+    @IBOutlet weak var bannerPageControl: UIPageControl!
+    @IBOutlet weak var profileImage: UIScrollView!
+    @IBOutlet weak var realNameLabel: UIScrollView!
+    @IBOutlet weak var usernameLabel: UIScrollView!
+    @IBOutlet weak var bannerImage: UIImageView!
+    @IBOutlet weak var tweetCount: UILabel!
+    @IBOutlet weak var followingCount: UILabel!
+    @IBOutlet weak var followerCount: UILabel!
+    @IBOutlet weak var tweetsTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +36,5 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
