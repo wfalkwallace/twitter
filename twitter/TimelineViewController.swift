@@ -23,8 +23,8 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposerV
         
         setupTable()
 
-        let myMenuStoryboard = UIStoryboard(name: "Menu", bundle: nil)
-        menuViewController = myMenuStoryboard.instantiateViewControllerWithIdentifier("MenuViewController") as MenuViewController
+        let menuStoryboard = UIStoryboard(name: "Menu", bundle: nil)
+        menuViewController = menuStoryboard.instantiateViewControllerWithIdentifier("MenuViewController") as MenuViewController
         menuWidth = 200
         menuOriginX = -menuWidth
         menuViewController.view.frame = CGRect(x: menuOriginX, y: 0, width: 200, height: timelineContainerView.frame.height)
