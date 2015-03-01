@@ -556,6 +556,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJC-h5-wvq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="LBw-9P-nWC"/>
             </objects>
             <point key="canvasLocation" x="1668" y="356"/>
         </scene>

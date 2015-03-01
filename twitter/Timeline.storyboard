@@ -25,6 +25,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="d8g-V6-DHm" firstAttribute="top" secondItem="6j8-Ve-Z1J" secondAttribute="bottom" id="OaM-R9-2sx"/>
                             <constraint firstItem="6j8-Ve-Z1J" firstAttribute="leading" secondItem="xqb-Mz-2Gx" secondAttribute="leading" id="RF7-vL-oxX"/>
@@ -53,6 +54,9 @@
                                 <include reference="RF7-vL-oxX"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ufh-K7-Umv" appends="YES" id="0Tk-HL-pf9"/>
+                        </connections>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Home" id="bEf-1o-odw">
@@ -72,6 +76,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMo-jA-iaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ufh-K7-Umv"/>
             </objects>
             <point key="canvasLocation" x="3981" y="240"/>
         </scene>
