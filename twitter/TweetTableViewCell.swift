@@ -9,7 +9,7 @@
 import UIKit
 
 class TweetTableViewCell: UITableViewCell {
-
+    
     var tweet: Tweet? {
         didSet {
             tweetNameLabel.text = tweet!.user!.name
@@ -19,7 +19,11 @@ class TweetTableViewCell: UITableViewCell {
             tweetProfileImageURL.setImageWithURL(NSURL(string: tweet!.user!.profileImageURL!))
             retweetCount.text = "\(tweet!.retweetCount!)"
             favoriteCount.text = "\(tweet!.favoriteCount!)"
-            tweetRetweetLabel?.text = "Retweet of \(tweet!.retweetedStatus?.user!.screenname ?? String())"
+            if let retweet = tweet!.retweetedStatus {
+                tweetRetweetLabel.text = "Retweet of \(retweet.user!.screenname!)"
+            } else {
+                tweetRetweetContainerView.removeFromSuperview()
+            }
             if tweet!.favorited! {
                 favoriteButton.setImage(UIImage(named: "favorite-on"), forState: .Normal)
             }
@@ -34,7 +38,8 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var tweetTimestampLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
     @IBOutlet weak var tweetProfileImageURL: UIImageView!
-    @IBOutlet weak var tweetRetweetLabel: UILabel?
+    @IBOutlet weak var tweetRetweetLabel: UILabel!
+    @IBOutlet weak var tweetRetweetContainerView: UIView!
     
     @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
@@ -45,19 +50,26 @@ class TweetTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     @IBAction func onRetweet(sender: AnyObject) {
-        tweet?.retweeted = true
-        tweet?.retweetCount! += 1
-        retweetCount.text = "\(tweet!.retweetCount!)"
-        TwitterClient.sharedInstance.retweetWithBlock(tweet!, block: { (tweet, error) -> () in
-            if let tweet = tweet {
-                self.retweetButton.setImage(UIImage(named: "retweet-on"), forState: .Normal)
+        if let retweeted = tweet?.retweeted {
+            // tweet?.retweeted = !retweeted
+            tweet?.retweeted = true
+            if !retweeted {
+                tweet?.retweetCount! += 1
+                retweetCount.text = "\(tweet!.retweetCount!)"
+                TwitterClient.sharedInstance.retweetWithBlock(tweet!, block: { (tweet, error) -> () in
+                    if let tweet = tweet {
+                        self.tweet = tweet
+                    } else {
+                        println(error)
+                        // some error handling here
+                    }
+                })
             } else {
-                println(error)
-                // some error handling here
+                // delete retweet
             }
-        })
+        }
     }
     
     @IBAction func onFavorite(sender: AnyObject) {
@@ -67,7 +79,7 @@ class TweetTableViewCell: UITableViewCell {
                 tweet?.favoriteCount! += 1
                 TwitterClient.sharedInstance.favoriteWithBlock(tweet!, block: { (tweet, error) -> () in
                     if let tweet = tweet {
-                        self.favoriteButton.setImage(UIImage(named: "favorite-on"), forState: .Normal)
+                        self.tweet = tweet
                     } else {
                         println(error)
                         // some error handling here
@@ -88,10 +100,14 @@ class TweetTableViewCell: UITableViewCell {
         }
     }
     
+    @IBAction func onReply(sender: AnyObject) {
+    }
+    
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

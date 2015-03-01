@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,21 +11,35 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-blue" translatesAutoresizingMaskIntoConstraints="NO" id="fVf-pO-Uvc">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo-circle" translatesAutoresizingMaskIntoConstraints="NO" id="fVf-pO-Uvc">
                     <rect key="frame" x="424" y="424" width="48" height="48"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="48" id="4S2-d4-oA7"/>
-                        <constraint firstAttribute="height" constant="48" id="TZV-xq-7mU"/>
+                        <constraint firstAttribute="width" constant="48" id="4S2-d4-oA7">
+                            <variation key="widthClass=compact" constant="512"/>
+                        </constraint>
+                        <constraint firstAttribute="height" constant="48" id="TZV-xq-7mU">
+                            <variation key="widthClass=compact" constant="512"/>
+                        </constraint>
                     </constraints>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <exclude reference="4S2-d4-oA7"/>
+                            <exclude reference="TZV-xq-7mU"/>
+                        </mask>
+                    </variation>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="fVf-pO-Uvc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3RF-7e-tES"/>
+                <constraint firstAttribute="trailingMargin" secondItem="fVf-pO-Uvc" secondAttribute="trailing" constant="24" id="4bU-RJ-haI"/>
+                <constraint firstItem="fVf-pO-Uvc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="24" id="99M-II-dkR"/>
                 <constraint firstAttribute="bottom" secondItem="fVf-pO-Uvc" secondAttribute="bottom" id="DVe-45-7Gs"/>
                 <constraint firstItem="fVf-pO-Uvc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Dha-Jm-Eht"/>
                 <constraint firstAttribute="centerX" secondItem="fVf-pO-Uvc" secondAttribute="centerX" id="feD-S3-xXk"/>
                 <constraint firstAttribute="trailing" secondItem="fVf-pO-Uvc" secondAttribute="trailing" id="nTA-Kv-PaA"/>
+                <constraint firstAttribute="centerX" secondItem="fVf-pO-Uvc" secondAttribute="centerX" id="raP-n6-wgZ"/>
+                <constraint firstAttribute="centerY" secondItem="fVf-pO-Uvc" secondAttribute="centerY" id="sNu-oo-ax6"/>
                 <constraint firstAttribute="centerY" secondItem="fVf-pO-Uvc" secondAttribute="centerY" id="uFu-eV-b98"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -32,15 +47,29 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="3RF-7e-tES"/>
+                    <exclude reference="4bU-RJ-haI"/>
+                    <exclude reference="99M-II-dkR"/>
                     <exclude reference="Dha-Jm-Eht"/>
                     <exclude reference="feD-S3-xXk"/>
+                    <exclude reference="raP-n6-wgZ"/>
+                    <exclude reference="sNu-oo-ax6"/>
                     <exclude reference="uFu-eV-b98"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="constraints">
+                    <include reference="4bU-RJ-haI"/>
+                    <include reference="99M-II-dkR"/>
+                    <exclude reference="DVe-45-7Gs"/>
+                    <exclude reference="nTA-Kv-PaA"/>
+                    <include reference="raP-n6-wgZ"/>
+                    <include reference="sNu-oo-ax6"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
     <resources>
-        <image name="logo-blue" width="16" height="16"/>
+        <image name="logo-circle" width="512" height="512"/>
     </resources>
 </document>

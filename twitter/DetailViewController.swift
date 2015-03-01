@@ -25,7 +25,9 @@ class DetailViewController: UIViewController, ComposerViewControllerDelegate {
     @IBOutlet weak var tweetRetweetUserName: UILabel!
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var tweetRetweetButton: UIButton!
+    @IBOutlet weak var tweetRetweetCount: UILabel!
     @IBOutlet weak var tweetFavoriteButton: UIButton!
+    @IBOutlet weak var tweetFavoriteCount: UILabel!
     
     
     @IBAction func onRetweet(sender: AnyObject) {
@@ -94,8 +96,10 @@ class DetailViewController: UIViewController, ComposerViewControllerDelegate {
         tweetTimestamp.text = tweet!.formattedTimestamp
         tweetText.text = tweet!.text
         tweetProfileImage.setImageWithURL(NSURL(string: tweet!.user!.profileImageURL!))
+        tweetRetweetCount.text = "\(tweet!.retweetCount)"
+        tweetFavoriteCount.text = "\(tweet!.favoriteCount)"
         if let retweet = tweet!.retweetedStatus {
-            tweetRetweetUserName?.text = "Retweet of \(tweet!.retweetedStatus?.user!.screenname ?? String())"
+            tweetRetweetUserName.text = "Retweet of \(tweet!.retweetedStatus?.user!.screenname ?? String())"
             tweetRetweetUIView.hidden = false
         } else {
             tweetRetweetUIView.hidden = true

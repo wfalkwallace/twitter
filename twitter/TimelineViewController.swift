@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource, ComposerViewControllerDelegate, DetailViewControllerDelegate, UITableViewDelegate {
+class TimelineViewController: UIViewController, UITableViewDataSource, ComposerViewControllerDelegate, DetailViewControllerDelegate, UITableViewDelegate {
 
     var tweets: [Tweet]?
     @IBOutlet weak var tweetsTableView: UITableView!
@@ -16,32 +16,31 @@ class TweetsViewController: UIViewController, UITableViewDataSource, ComposerVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tweetsTableView.dataSource = self
-        tweetsTableView.delegate = self
+        let nib = UINib(nibName: "TweetTableViewCell", bundle: NSBundle.mainBundle())
+        tweetsTableView.registerNib(nib, forCellReuseIdentifier: "com.falk-wallace.TweetCell")
+        
         tweetsTableView.rowHeight = UITableViewAutomaticDimension
         tweetsTableView.estimatedRowHeight = 89
-
+        
         tweetsTableView.addPullToRefreshWithActionHandler { () -> Void in
             TwitterClient.sharedInstance.homeTimelineWithParams(nil, block: { (tweets, error) -> () in
                 self.tweets = tweets
                 self.tweetsTableView.reloadData()
-                // hack to fix initial load rowheights
-                self.tweetsTableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, self.tweetsTableView.numberOfSections())), withRowAnimation: .None)
                 self.tweetsTableView.pullToRefreshView.stopAnimating()
             })
         }
         
-        tweetsTableView.addInfiniteScrollingWithActionHandler { () -> Void in
-            var params = [:]
-            if let maxId = self.tweets?.last?.id {
-                params = ["max_id": "\(maxId + 1)"]
-            }
-            TwitterClient.sharedInstance.homeTimelineWithParams(params, block: { (tweets, error) -> () in
-                self.tweets? += tweets!
-                self.tweetsTableView.infiniteScrollingView.stopAnimating()
-                self.tweetsTableView.reloadData()
-            })
-        }
+//        tweetsTableView.addInfiniteScrollingWithActionHandler { () -> Void in
+//            var params = [:]
+//            if let maxId = self.tweets?.last?.id {
+//                params = ["max_id": "\(maxId + 1)"]
+//            }
+//            TwitterClient.sharedInstance.homeTimelineWithParams(params, block: { (tweets, error) -> () in
+//                self.tweets? += tweets!
+//                self.tweetsTableView.infiniteScrollingView.stopAnimating()
+//                self.tweetsTableView.reloadData()
+//            })
+//        }
         
         tweetsTableView.triggerPullToRefresh()
     }
@@ -76,9 +75,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, ComposerVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tweets?[indexPath.row].retweetedStatus?.user!.screenname != nil
-            ? tweetsTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.RetweetCell") as TweetTableViewCell
-            : tweetsTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TweetCell") as TweetTableViewCell
+        let cell = tweetsTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TweetCell") as TweetTableViewCell
         cell.tweet = tweets?[indexPath.row]
         return cell
     }
