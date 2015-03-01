@@ -96,8 +96,10 @@ class DetailViewController: UIViewController, ComposerViewControllerDelegate {
         tweetTimestamp.text = tweet!.formattedTimestamp
         tweetText.text = tweet!.text
         tweetProfileImage.setImageWithURL(NSURL(string: tweet!.user!.profileImageURL!))
-        tweetRetweetCount.text = "\(tweet!.retweetCount)"
-        tweetFavoriteCount.text = "\(tweet!.favoriteCount)"
+        tweetProfileImage.layer.cornerRadius = 10;
+        tweetProfileImage.clipsToBounds = true;
+        tweetRetweetCount.text = "\(tweet!.retweetCount!)"
+        tweetFavoriteCount.text = "\(tweet!.favoriteCount!)"
         if let retweet = tweet!.retweetedStatus {
             tweetRetweetUserName.text = "Retweet of \(tweet!.retweetedStatus?.user!.screenname ?? String())"
             tweetRetweetUIView.hidden = false

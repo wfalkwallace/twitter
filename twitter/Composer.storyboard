@@ -79,7 +79,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bap-8N-frx" firstAttribute="top" secondItem="0JU-NB-pIL" secondAttribute="bottom" constant="8" id="1KG-Wa-yx8"/>
+                            <constraint firstItem="bap-8N-frx" firstAttribute="top" secondItem="0JU-NB-pIL" secondAttribute="bottom" constant="8" id="1KG-Wa-yx8">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="kn6-WT-ynm" firstAttribute="leading" secondItem="9lN-Ky-tao" secondAttribute="leading" constant="8" id="2Pr-hB-PeQ"/>
                             <constraint firstItem="vNQ-Ix-o17" firstAttribute="top" secondItem="O5K-rk-B4a" secondAttribute="bottom" constant="8" id="5Co-or-UYK"/>
                             <constraint firstItem="0JU-NB-pIL" firstAttribute="top" secondItem="wdh-xN-eXC" secondAttribute="bottom" constant="8" id="Ctd-HD-4C2"/>
@@ -146,12 +148,12 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Compose" id="CcI-52-TBf">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="YJl-ZW-Ake">
+                        <barButtonItem key="leftBarButtonItem" image="icon-discard" id="YJl-ZW-Ake">
                             <connections>
                                 <action selector="onCancel:" destination="4eK-Af-Rfx" id="qwr-cR-H7d"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Send" id="QcV-ts-Jp6">
+                        <barButtonItem key="rightBarButtonItem" image="icon-send" id="QcV-ts-Jp6">
                             <connections>
                                 <action selector="onSend:" destination="4eK-Af-Rfx" id="yHj-BZ-FGr"/>
                             </connections>
@@ -188,5 +190,9 @@
             <point key="canvasLocation" x="531" y="325"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-discard" width="32" height="32"/>
+        <image name="icon-send" width="32" height="32"/>
+    </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

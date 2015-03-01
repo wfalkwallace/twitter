@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TweetTableViewCellDelegate: class {
+    func tweetTableViewCell(tweetTableViewCell: TweetTableViewCell,  replyTo tweet: Tweet?)
+}
+
 class TweetTableViewCell: UITableViewCell {
     
     var tweet: Tweet? {
@@ -46,9 +50,13 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var retweetCount: UILabel!
     @IBOutlet weak var favoriteCount: UILabel!
     
+    var delegate: TweetTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        tweetProfileImageURL.layer.cornerRadius = 10;
+        tweetProfileImageURL.clipsToBounds = true;
     }
     
     @IBAction func onRetweet(sender: AnyObject) {
@@ -101,6 +109,7 @@ class TweetTableViewCell: UITableViewCell {
     }
     
     @IBAction func onReply(sender: AnyObject) {
+        self.delegate?.tweetTableViewCell(self, replyTo: tweet)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

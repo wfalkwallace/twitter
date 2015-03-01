@@ -22,7 +22,7 @@ Time spent: [10 hours](https://wakatime.com/@wfalkwallace/projects/gfjkmjlzul)
 - [x] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
 - [x] Retweeting and favoriting should increment the retweet and favorite count.
 - [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
-- [ ] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
+- [x] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
 - [x] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 
 ### Walkthrough
@@ -39,8 +39,8 @@ Time spent: [?? hours](https://wakatime.com/@wfalkwallace/projects/gfjkmjlzul)
 
 #### Required
 
-- [ ] Menu: Dragging anywhere in the view should reveal the menu.
-- [ ] Menu: The menu should include links to your profile, the home timeline, and the mentions view.
+- [x] Menu: Dragging anywhere in the view should reveal the menu.
+- [x] Menu: The menu should include links to your profile, the home timeline, and the mentions view.
 - [x] Menu: The menu can look similar to the LinkedIn menu below or feel free to take liberty with the UI.
 - [ ] Profile: Contains the user header view
 - [ ] Profile: Contains a section with the users basic stats: # tweets, # following, # followers

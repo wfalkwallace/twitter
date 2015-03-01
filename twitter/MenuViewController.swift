@@ -11,6 +11,7 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var menuHeaderView: UIView!
+    @IBOutlet weak var menuHeaderRealNameLabel: UILabel!
     @IBOutlet weak var menuHeaderUsernameLabel: UILabel!
     @IBOutlet weak var menuHeaderProfileImage: UIImageView!
     @IBOutlet weak var menuTableView: UITableView!
@@ -23,6 +24,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         var user = User.currentUser!
         menuHeaderUsernameLabel.text = user.screenname
         menuHeaderProfileImage.setImageWithURL(NSURL(string: user.profileImageURL!))
+        menuHeaderProfileImage.layer.cornerRadius = 10;
+        menuHeaderProfileImage.clipsToBounds = true;
+        
+        menuTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +41,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = menuTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.MenuItemCell") as MenuTableViewCell
+        cell.menuItemName.text = menuItems[indexPath.row]
+        cell.menuItemIcon.image = UIImage(named: "menu-" + menuItems[indexPath.row])
 //        cell.delegate = self
         return cell
     }

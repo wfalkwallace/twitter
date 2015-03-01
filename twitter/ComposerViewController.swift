@@ -32,7 +32,7 @@ class ComposerViewController: UIViewController {
         composerUserImage.setImageWithURL(NSURL(string: user.profileImageURL!))
         
         if let reply = reply {
-            composerTextField.text = "@\(reply.user?.screenname)"
+            composerTextField.text = "@\(reply.user?.screenname!)"
         }
     }
 
