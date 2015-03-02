@@ -33,7 +33,7 @@ Time spent: [10 hours](https://wakatime.com/@wfalkwallace/projects/gfjkmjlzul)
 
 This is an extension of the basic twitter app above to navigate and view user profiles.
 
-Time spent: [?? hours](https://wakatime.com/@wfalkwallace/projects/gfjkmjlzul)
+Time spent: [10 hours](https://wakatime.com/@wfalkwallace/projects/gfjkmjlzul)
 
 ### Features
 
