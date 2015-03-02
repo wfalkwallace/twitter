@@ -10,6 +10,7 @@ import UIKit
 
 protocol TweetTableViewCellDelegate: class {
     func tweetTableViewCell(tweetTableViewCell: TweetTableViewCell,  replyTo tweet: Tweet?)
+    func tweetTableViewCell(tweetTableViewCell: TweetTableViewCell,  viewProfile user: User?)
 }
 
 class TweetTableViewCell: UITableViewCell {
@@ -57,6 +58,11 @@ class TweetTableViewCell: UITableViewCell {
 
         tweetProfileImageURL.layer.cornerRadius = 10;
         tweetProfileImageURL.clipsToBounds = true;
+        
+        let profileTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("onProfileTapped:"))
+        profileTapRecognizer.delegate = self
+        profileTapRecognizer.cancelsTouchesInView = true
+        tweetProfileImageURL.addGestureRecognizer(profileTapRecognizer)
     }
     
     @IBAction func onRetweet(sender: AnyObject) {
@@ -110,6 +116,10 @@ class TweetTableViewCell: UITableViewCell {
     
     @IBAction func onReply(sender: AnyObject) {
         self.delegate?.tweetTableViewCell(self, replyTo: tweet)
+    }
+
+    func onProfileTapped(sender: UITapGestureRecognizer) {
+        delegate?.tweetTableViewCell(self, viewProfile: tweet?.user)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

@@ -17,6 +17,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var menuTableView: UITableView!
     
     var menuItems = ["Profile", "Timeline", "Mentions"]
+    let MENU_WIDTH:CGFloat = 200
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +44,26 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = menuTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.MenuItemCell") as MenuTableViewCell
         cell.menuItemName.text = menuItems[indexPath.row]
         cell.menuItemIcon.image = UIImage(named: "menu-" + menuItems[indexPath.row])
-//        cell.delegate = self
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if indexPath.row == 0 {
+            let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+            let profileNavigationController = profileStoryboard.instantiateInitialViewController() as UINavigationController
+            self.presentViewController(profileNavigationController, animated: true, completion: nil)
+        } else if indexPath.row == 1 {
+            let timelineStoryboard = UIStoryboard(name: "Timeline", bundle: nil)
+            let timelineNav = timelineStoryboard.instantiateInitialViewController() as UINavigationController
+            self.presentViewController(timelineNav, animated: true, completion: nil)
+        } else if indexPath.row == 2 {
+            let timelineStoryboard = UIStoryboard(name: "Timeline", bundle: nil)
+            let timelineNav = timelineStoryboard.instantiateInitialViewController() as UINavigationController
+            let timeline = timelineNav.viewControllers[0] as TimelineViewController
+            timeline.mentions = true
+            self.presentViewController(timelineNav, animated: true, completion: nil)
+        }
     }
 
 }

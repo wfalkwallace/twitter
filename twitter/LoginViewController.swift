@@ -28,8 +28,6 @@ class ViewController: UIViewController {
             if user != nil {
                 let timelineStoryboard = UIStoryboard(name: "Timeline", bundle: nil)
                 let timelineNav = timelineStoryboard.instantiateInitialViewController() as UINavigationController
-                // This hack should move to CompNavCont subclass
-                let timeline = timelineNav.viewControllers[0] as TimelineViewController
                 self.presentViewController(timelineNav, animated: true, completion: nil)
             } else {
                 //handle login error

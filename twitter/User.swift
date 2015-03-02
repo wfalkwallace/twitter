@@ -25,8 +25,10 @@ class User: NSObject {
     var profileBackgroundTile: String?
     var profileTextColor: String?
     var profileUseBackgroundImage: Bool?
+    var followersCount: Int?
+    var followingCount: Int?
+    var statusCount: Int?
 
-    
     
     var dictionary: NSDictionary
     
@@ -44,6 +46,9 @@ class User: NSObject {
         profileBackgroundTile = dictionary["profile_background_tile"] as? String
         profileTextColor = dictionary["profile_text_color"] as? String
         profileUseBackgroundImage = dictionary["profile_use_background_image"] as? Bool
+        followersCount = dictionary["followers_count"] as? Int
+        followingCount = dictionary["following"] as? Int
+        statusCount = dictionary["statuses_count"] as? Int
     }
     
     func logout() {

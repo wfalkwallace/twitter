@@ -17,6 +17,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposerV
     var menuViewController: MenuViewController!
     var menuOriginX: CGFloat!
     var menuWidth: CGFloat!
+    var mentions = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposerV
 
         let menuStoryboard = UIStoryboard(name: "Menu", bundle: nil)
         menuViewController = menuStoryboard.instantiateViewControllerWithIdentifier("MenuViewController") as MenuViewController
-        menuWidth = 200
+        menuWidth = menuViewController.MENU_WIDTH
         menuOriginX = -menuWidth
         menuViewController.view.frame = CGRect(x: menuOriginX, y: 0, width: 200, height: timelineContainerView.frame.height)
         timelineContainerView.addSubview(menuViewController.view)
@@ -72,24 +73,40 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposerV
         tweetsTableView.estimatedRowHeight = 89
         
         tweetsTableView.addPullToRefreshWithActionHandler { () -> Void in
-            TwitterClient.sharedInstance.homeTimelineWithParams(nil, block: { (tweets, error) -> () in
-                self.tweets = tweets
-                self.tweetsTableView.reloadData()
-                self.tweetsTableView.pullToRefreshView.stopAnimating()
-            })
+            if self.mentions {
+                TwitterClient.sharedInstance.mentionsTimelineWithParams(nil, block: { (tweets, error) -> () in
+                    self.tweets = tweets
+                    self.tweetsTableView.reloadData()
+                    self.tweetsTableView.pullToRefreshView.stopAnimating()
+                })
+            } else {
+                TwitterClient.sharedInstance.homeTimelineWithParams(nil, block: { (tweets, error) -> () in
+                    self.tweets = tweets
+                    self.tweetsTableView.reloadData()
+                    self.tweetsTableView.pullToRefreshView.stopAnimating()
+                })
+            }
         }
         
-        //        tweetsTableView.addInfiniteScrollingWithActionHandler { () -> Void in
-        //            var params = [:]
-        //            if let maxId = self.tweets?.last?.id {
-        //                params = ["max_id": "\(maxId + 1)"]
-        //            }
-        //            TwitterClient.sharedInstance.homeTimelineWithParams(params, block: { (tweets, error) -> () in
-        //                self.tweets? += tweets!
-        //                self.tweetsTableView.infiniteScrollingView.stopAnimating()
-        //                self.tweetsTableView.reloadData()
-        //            })
-        //        }
+        tweetsTableView.addInfiniteScrollingWithActionHandler { () -> Void in
+            var params = [:]
+            if let maxId = self.tweets?.last?.id {
+                params = ["max_id": "\(maxId + 1)"]
+            }
+            if self.mentions {
+                TwitterClient.sharedInstance.mentionsTimelineWithParams(nil, block: { (tweets, error) -> () in
+                    self.tweets = tweets
+                    self.tweetsTableView.reloadData()
+                    self.tweetsTableView.pullToRefreshView.stopAnimating()
+                })
+            } else {
+                TwitterClient.sharedInstance.homeTimelineWithParams(params, block: { (tweets, error) -> () in
+                    self.tweets? += tweets!
+                    self.tweetsTableView.infiniteScrollingView.stopAnimating()
+                    self.tweetsTableView.reloadData()
+                })
+            }
+        }
         
         tweetsTableView.triggerPullToRefresh()
     }
@@ -106,6 +123,14 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposerV
         composer.reply = tweet
         composer.delegate = self
         self.presentViewController(composerNav, animated: true, completion: nil)
+    }
+    
+    func tweetTableViewCell(tweetTableViewCell: TweetTableViewCell, viewProfile user: User?) {
+        let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+        let profileNavigationController = profileStoryboard.instantiateInitialViewController() as UINavigationController
+        let profile = profileNavigationController.viewControllers[0] as ProfileViewController
+        profile.user = user
+        self.presentViewController(profileNavigationController, animated: true, completion: nil)
     }
     
     @IBAction func onCompose(sender: AnyObject) {
